@@ -1,13 +1,19 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}似水流年-时间线{% endblock %}
 
 {% block head %}
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet"  href="{{ url_for('static', filename='boot/bootstrap.min.css') }}">
 {% endblock %}
-
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static',filename='boot/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='boot/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='boot/moment-with-locales.min.js') }}"></script>
+{% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
@@ -18,11 +24,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Flasky</a>
+            <a class="navbar-brand" href="/">Years Are Flowing away Like a River</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
+                <li><a href="/">Time Line</a></li>
             </ul>
         </div>
     </div>
@@ -40,9 +46,4 @@
 
     {% block page_content %}{% endblock %}
 </div>
-{% endblock %}
-
-{% block scripts %}
-{{ super() }}
-{{ moment.include_moment() }}
 {% endblock %}
