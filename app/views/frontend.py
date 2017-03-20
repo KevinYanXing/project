@@ -9,11 +9,12 @@ def index():
     form = NameForm()
     if form.validate_on_submit():
         old_name = session.get('name')
+        old_birth = session.get('birth')
         if old_name is not None and old_name != form.name.data:
             flash('Looks like you have changed your name!')
+        if old_birth is not None and old_birth != form.birthday.data:
+            flash('Looks like you have changed your brthday!')
         session['name'] = form.name.data
-        kn = Kn()
-        kn.name = form.name.data
-        kn.save()
+        session['birth'] = form.birthday.data
         return redirect(url_for('frontend.index'))
-    return render_template('frontend/index.html', form=form, name=session.get('name'))
+    return render_template('frontend/index.html', form=form, name=session.get('name'),birth=session.get('birth'))

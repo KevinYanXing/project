@@ -7,29 +7,75 @@
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="stylesheet"  href="{{ url_for('static', filename='boot/bootstrap.min.css') }}">
+<link rel="stylesheet"  href="{{ url_for('static', filename='homepage/style.css') }}">
+<link rel="stylesheet"  href="{{ url_for('static', filename='main.css') }}">
 {% endblock %}
 {% block scripts %}
 {{ super() }}
 <script type="text/javascript" src="{{ url_for('static',filename='boot/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='boot/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='boot/moment-with-locales.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='homepage/jquery.backstretch.min.js') }}"></script>
+<script type="text/javascript">
+$(function(){
+    $('.coming-soon').backstretch([
+      "static/homepage/img/backgrounds/1.jpg"
+    , "static/homepage/img/backgrounds/2.jpg"
+    , "static/homepage/img/backgrounds/3.jpg"
+    ], {duration: 3000, fade: 750});
+})
+</script>
 {% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Years Are Flowing away Like a River</a>
+        <div class="header row">
+        <div class="logo span4">
+            <h1><a href="">Time-line</a> <span>.</span></h1>
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Time Line</a></li>
-            </ul>
+        <div class="call-us span8">
+            <p>Author: <span>Kevin</span> | Email: <span>347252351@qq.com</span></p>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="coming-soon">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <h2>I come into the world in July 2, 1994</h2>
+                    <p>As Time Flies Away And Years Are Flowing away Like a River , Now
+                        <strong>
+                            <script language = "JavaScript" type = "text/javascript" >
+                            var urodz = new Date("07/02/1994");
+                            var now = new Date();
+                            var ile = now.getTime() - urodz.getTime();
+                            var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+                            document.write( + dni)
+                            </script>
+                        </strong>
+                        Days Had Passed By
+                    </p>
+                    <div class="timer">
+                        <div class="years-wrapper">
+                            <span class="years"></span> <br>YEARS
+                        </div>
+                        <div class="days-wrapper">
+                            <span class="days"></span> <br>DAYS
+                        </div>
+                        <div class="hours-wrapper">
+                            <span class="hours"></span> <br>HOURS
+                        </div>
+                        <div class="minutes-wrapper">
+                            <span class="minutes"></span> <br>MIMUTES
+                        </div>
+                        <div class="seconds-wrapper">
+                            <span class="seconds"></span> <br>SECONDS
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -37,6 +83,7 @@
 
 {% block content %}
 <div class="container">
+
     {% for message in get_flashed_messages() %}
     <div class="alert alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
