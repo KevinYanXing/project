@@ -4,52 +4,7 @@
 {% block title %}Time-Line{% endblock %}
 {% block scripts %}
 {{ super() }}
-<script type="text/javascript" language="javascript">
-    function secondToDate(second) {
-        if (!second) {
-            return 0;
-        }
-        var time = new Array(0, 0, 0, 0, 0);
-        if (second >= 365 * 24 * 3600) {
-            time[0] = parseInt(second / (365 * 24 * 3600));
-            second %= 365 * 24 * 3600;
-        }
-        if (second >= 24 * 3600) {
-            time[1] = parseInt(second / (24 * 3600));
-            second %= 24 * 3600;
-        }
-        if (second >= 3600) {
-            time[2] = parseInt(second / 3600);
-            second %= 3600;
-        }
-        if (second >= 60) {
-            time[3] = parseInt(second / 60);
-            second %= 60;
-        }
-        if (second > 0) {
-            time[4] = second;
-        }
-        return time;
-    }
-    function setTime() {
-        {% if birth %}
-            var birth = '{{ birth }}';
-
-            birth = birth.split('-');
-            console.debug(birth);
-        {% endif %}
-        var create_time = Math.round(new Date(Date.UTC(birth[0], birth[1], birth[2], 0, 0, 0)).getTime() / 1000);
-        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
-        currentTime = secondToDate((timestamp - create_time));
-        $('.timer .years').html(currentTime[0]);
-        $('.timer .days').html(currentTime[1]);
-        $('.timer .hours').html(currentTime[2]);
-        $('.timer .minutes').html(currentTime[3]);
-        $('.timer .seconds').html(currentTime[4]);
-    }
-    {% if birth %}
-        setInterval(setTime, 1000);
-    {% endif %}
+<script type="text/javascript">
 </script>
 {% endblock %}
 {% block page_content %}
@@ -58,13 +13,13 @@
     <div class="container">
         <div class="row">
             <div class="span12 subscribe">
-                <h3>Life is shot , but take it easy .</h3>
+                <h3 style="margin: inherit">Life is shot , but take it easy .</h3>
                 <p>If something is meant to be , it will be , in the right time , with the right person , for the best reason !</p>
             </div>
-            {{ wtf.quick_form(form) }}
+
         </div>
     </div>
-
+    {{ wtf.quick_form(form) }}
 
 </div>
 

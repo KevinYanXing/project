@@ -17,24 +17,90 @@
 <script type="text/javascript" src="{{ url_for('static',filename='boot/moment-with-locales.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='homepage/jquery.backstretch.min.js') }}"></script>
 <script type="text/javascript">
-$(function(){
-    $('.coming-soon').backstretch([
-      "static/homepage/img/backgrounds/1.jpg"
-    , "static/homepage/img/backgrounds/2.jpg"
-    , "static/homepage/img/backgrounds/3.jpg"
-    ], {duration: 3000, fade: 750});
-})
+    $(function(){
+        $('.coming-soon').backstretch([
+            '{{ url_for('static',filename='homepage/img/backgrounds/1.jpg') }}',
+            '{{ url_for('static',filename='homepage/img/backgrounds/2.jpg') }}',
+            '{{ url_for('static',filename='homepage/img/backgrounds/3.jpg') }}'
+        ], {duration: 3000, fade: 750});
+    });
+    function secondToDate(second) {
+        if (!second) {
+            return 0;
+        }
+        var time = new Array(0, 0, 0, 0, 0);
+        if (second >= 365 * 24 * 3600) {
+            time[0] = parseInt(second / (365 * 24 * 3600));
+            second %= 365 * 24 * 3600;
+        }
+        if (second >= 24 * 3600) {
+            time[1] = parseInt(second / (24 * 3600));
+            second %= 24 * 3600;
+        }
+        if (second >= 3600) {
+            time[2] = parseInt(second / 3600);
+            second %= 3600;
+        }
+        if (second >= 60) {
+            time[3] = parseInt(second / 60);
+            second %= 60;
+        }
+        if (second > 0) {
+            time[4] = second;
+        }
+        return time;
+    }
+    birth = [0,0,0];
+    function setTime() {
+        var create_time = Math.round(new Date(Date.UTC(birth[0], birth[1], birth[2], 0, 0, 0)).getTime() / 1000);
+        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+        currentTime = secondToDate((timestamp - create_time));
+        $('.timer .years').html(currentTime[0]);
+        $('.timer .days').html(currentTime[1]);
+        $('.timer .hours').html(currentTime[2]);
+        $('.timer .minutes').html(currentTime[3]);
+        $('.timer .seconds').html(currentTime[4]);
+    }
+    {% if birth %}
+        console.debug('{{ birth }}');
+        birth_day = '{{ birth }}';
+        birth = birth_day.split('-');
+        setInterval(setTime, 1000);
+        urodz = new Date(birth_day);
+        var now = new Date();
+        var ile = now.getTime() - urodz.getTime();
+        var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+        $('.span12 p strong').html(dni);
+        month_eng = {
+            '0':'0',
+            '01':'Jan.',
+            '02':'Feb.',
+            '03':'Mar.',
+            '04':'Apr.',
+            '05':'May',
+            '06':'Jun.',
+            '07':'Jul.',
+            '08':'Aug.',
+            '09':'Sep.',
+            '10':'Oct.',
+            '11':'Nov.',
+            '12':'Dec.'
+        };
+        $('.span12 h2 strong').html(birth[2]+','+month_eng[birth[1]]+','+birth[0]);
+    {% endif %}
+
 </script>
 {% endblock %}
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
-        <div class="header row">
+        <div class="header">
         <div class="logo span4">
-            <h1><a href="">Time-line</a> <span>.</span></h1>
+            <img src="{{ url_for('static',filename='web_logo.png') }}" width="50px" height="50px" style="float: left;margin-top:5px">
+            <h1><a href="/">Time-line</a> <span>.</span></h1>
         </div>
         <div class="call-us span8">
-            <p><a>Sign in</a> or <a>Sign up</a></p>
+            <p><a>Sign in</a> or <a href="{{ url_for('frontend.signup') }}">Sign up</a></p>
         </div>
     </div>
     </div>
@@ -44,18 +110,9 @@ $(function(){
         <div class="container">
             <div class="row">
                 <div class="span12">
-                    <h2>You come into the world in July 2, 1994</h2>
+                    <h2>You come into the world in <strong>??</strong></h2>
                     <p>As Time Flies Away And Years Are Flowing away Like a River , Now
-                        <strong>
-                            <script language = "JavaScript" type = "text/javascript" >
-
-                            var urodz = new Date("07/02/1994");
-                            var now = new Date();
-                            var ile = now.getTime() - urodz.getTime();
-                            var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
-                            document.write( + dni)
-                            </script>
-                        </strong>
+                        <strong>??</strong>
                         Days Had Passed By
                     </p>
                     <div class="timer">
