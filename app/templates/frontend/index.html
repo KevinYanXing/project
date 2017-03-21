@@ -33,11 +33,12 @@
     }
     function setTime() {
         {% if birth %}
-        var birth = '{{ birth }}';
-        console.debug(birth);
-        birth.split('-');
+            var birth = '{{ birth }}';
+
+            birth = birth.split('-');
+            console.debug(birth);
         {% endif %}
-        var create_time = Math.round(new Date(Date.UTC(1994, 06, 02, 0, 0, 0)).getTime() / 1000);
+        var create_time = Math.round(new Date(Date.UTC(birth[0], birth[1], birth[2], 0, 0, 0)).getTime() / 1000);
         var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
         currentTime = secondToDate((timestamp - create_time));
         $('.timer .years').html(currentTime[0]);
@@ -46,7 +47,9 @@
         $('.timer .minutes').html(currentTime[3]);
         $('.timer .seconds').html(currentTime[4]);
     }
-    setInterval(setTime, 1000);
+    {% if birth %}
+        setInterval(setTime, 1000);
+    {% endif %}
 </script>
 {% endblock %}
 {% block page_content %}

@@ -1,7 +1,55 @@
 .navbar{
     margin-bottom: inherit;
 }
+.container{
+    padding-left: inherit;
+    padding-right: inherit;
+}
 .navbar-inverse {
     background-color: #F2F2F2;
     border-color: #F2F2F2;
 }
+
+a:hover {
+    color: #0090FF;
+    /*text-decoration: underline;*/
+}
+.row:before, .row:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.span8 {
+    float: left;
+    width: 620px;
+    min-height: 1px;
+    margin-left: 20px;
+}
+.span8 p a{
+    font-weight: 600;
+}
+.span4 {
+    width: 300px;
+    float: left;
+    min-height: 1px;
+    margin-left: 20px;
+}
+
+@media (min-width: 1200px) {
+    .row {
+        margin-left: -30px;
+    }
+    .row:before, .row:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+    .span8 {
+        width: 770px;
+    }
+
+    .span4 {
+        width: 370px;
+    }
+}
+

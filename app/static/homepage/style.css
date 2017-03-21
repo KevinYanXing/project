@@ -232,14 +232,6 @@ a:hover { text-decoration: none; }
     margin: 3px;
 }
 
-.social a.facebook { background: url(img/social-icons/facebook.png); }
-.social a.twitter { background: url(img/social-icons/twitter.png); }
-.social a.dribbble { background: url(img/social-icons/dribbble.png); }
-.social a.googleplus { background: url(img/social-icons/googleplus.png); }
-.social a.pinterest { background: url(img/social-icons/pinterest.png); }
-.social a.flickr { background: url(img/social-icons/flickr.png); }
-
-
 /***** Media Queries *****/
 
 @media (min-width: 768px) and (max-width: 979px) {
