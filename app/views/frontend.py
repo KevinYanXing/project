@@ -26,5 +26,8 @@ def index():
 def signup():
     form = SignupForm()
     if form.validate_on_submit():
-        print form.n.data,'00000000'
+        filename = form.n.data
+    else:
+        filename = None
+    print form.n.data
     return render_template('frontend/signup.html', form=form)
