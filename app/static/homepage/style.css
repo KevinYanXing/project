@@ -9,14 +9,14 @@ body {
     font-family: 'Lato', Arial, sans-serif;
     color: #555;
     font-weight: 400;
-    border-top: 2px solid #e75967;
+    border-top: 2px solid #9BD547;
 }
 
 strong { font-weight: 700; }
 a:hover { text-decoration: none; }
 
-::-moz-selection { background: #e75967; color: #fff; text-shadow: none; }
-::selection { background: #e75967; color: #fff; text-shadow: none; }
+::-moz-selection { background: #9BD547; color: #fff; text-shadow: none; }
+::selection { background: #9BD547; color: #fff; text-shadow: none; }
 
 .logo h1 {
     margin-top: 7px;
@@ -27,7 +27,7 @@ a:hover { text-decoration: none; }
     color: #555;
 }
 
-.logo h1 span { color: #e75967; }
+.logo h1 span { color: #9BD547; }
 
 .logo a {
     color: #555;
@@ -37,7 +37,7 @@ a:hover { text-decoration: none; }
     -webkit-transition: all .2s;
     -ms-transition: all .2s;
 }
-.logo a:hover { color: #e75967; }
+.logo a:hover { color: #9BD547; }
 
 .call-us {
     font-size: 18px;
@@ -107,7 +107,7 @@ a:hover { text-decoration: none; }
 .timer .hours-wrapper:hover,
 .timer .minutes-wrapper:hover,
 .timer .seconds-wrapper:hover {
-    background: #e75967 url(img/pattern-2.png);
+    background: #9BD547 url(img/pattern-2.png);
     text-shadow: none;
 }
 .timer .years,
@@ -176,7 +176,7 @@ a:hover { text-decoration: none; }
     height: 46px;
     margin: 0;
     padding: 0;
-    background: #e75967;
+    background: #9BD547;
     border: 0;
     font-family: 'Lato', Arial, sans-serif;
     font-size: 18px;
@@ -197,12 +197,12 @@ a:hover { text-decoration: none; }
 }
 
 .subscribe button:hover {
-    background: #e75967;
+    background: #9BD547;
     color: #fff;
 }
 
 .subscribe button:active {
-    background: #e75967;
+    background: #9BD547;
     color: #fff;
 }
 
@@ -211,7 +211,7 @@ a:hover { text-decoration: none; }
 }
 
 .error-message {
-    color: #e75967;
+    color: #9BD547;
 }
 
 .social {

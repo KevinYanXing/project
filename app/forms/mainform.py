@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField,DateField,PasswordField
+from wtforms import StringField, SubmitField,DateField,PasswordField,DateTimeField,TextAreaField
 from fsuper import SDateField
 from wtforms.validators import Required
 from flask import redirect,url_for
@@ -11,7 +11,7 @@ class NameForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class SignupForm(FlaskForm):
-    n = StringField('Input your your name:', validators=[Required()])
+    n = TextAreaField(label='Your name:', validators=[Required()],description='Please input your name:')
     # b = SDateField('Input your your birthday:', validators=[Required()])
     # m= SDateField('Input your your mobile phone:', validators=[Required()])
     # p = PasswordField('Input your password:', validators=[Required()])
@@ -22,10 +22,6 @@ class SignupForm(FlaskForm):
     def validate_n(self, field):
         print field.data
         raise ValueError,'You may input a fake date =.=!'
-
-    def validate_on_submit(self):
-        print 1111111
-        return redirect(url_for('frontend.index'))
 
 
 

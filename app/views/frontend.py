@@ -27,6 +27,4 @@ def signup():
     form = SignupForm()
     if form.validate_on_submit():
         print form.n.data,'00000000'
-    if form.is_submitted():
-        return form.validate_on_submit()
     return render_template('frontend/signup.html', form=form)
