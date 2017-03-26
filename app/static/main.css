@@ -1,16 +1,19 @@
 .navbar{
+    min-height: 75px;
     margin-bottom: inherit;
 }
 .page-header {
      margin: inherit;
 }
-.container{
+.navbar .container{
+    padding-top: 10px;
     padding-left: inherit;
     padding-right: inherit;
 }
 .navbar-inverse {
-    background-color: #F2F2F2;
-    border-color: #F2F2F2;
+    background-color: #1F1F1F;
+    border-color: #1F1F1F;
+    border-radius: inherit;
 }
 
 a:hover {
@@ -46,4 +49,52 @@ a:hover {
         width: 370px;
     }
 }
-
+.w600{
+    width: 600px;
+    border: 2px solid #ddd;
+    padding: 20px;
+    /*margin-top: 30px;*/
+    background-color: #F2F2F2;
+    border-radius: 10px;
+}
+.f-copyright {
+    background: #1F1F1F;
+    height: 85px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-bottom: 15px solid #9BD547;
+}
+.f-copyright {
+    position: relative;
+    z-index: 10;
+}
+.f-copyright .footerHolder {
+    position: relative;
+}
+.footer-nav {
+    color: #DEDEDE;
+    font-family: Arial,'\5B8B\4F53';
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+.footer-nav p {
+    margin-bottom: 14px;
+}
+.footer-nav a {
+    color: #DEDEDE!important;
+}
+.footer-nav .footer-nav-cut {
+    margin: 0 10px;
+    color: #DEDEDE;
+}
+.bgstyle{
+    height: 485px;
+    margin: 0 auto;
+    padding-top: 100px
+}
+.bgstyle1{
+    height: 530px;
+    margin: 0 auto;
+    padding-top: 10px
+}

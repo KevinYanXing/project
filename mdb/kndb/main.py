@@ -2,6 +2,7 @@
 from mdb.ext import db
 from mdb.models import Models
 from datetime import datetime
+from werkzeug.security import check_password_hash
 
 def format_ts(ts, format='%Y-%m-%d %H:%M:%S'):
         if not ts:
@@ -33,10 +34,15 @@ class Kn(Models):
 class User(Models):
     """
     用户数据库:
-    用户名:n
-    角色:r
+    用户名:name
+    角色:role
     个性签名:s
-    头像:p
+    头像:pho
+    密码:pwd
+    生日:birth
     其他...
     """
     db = db.USER
+    def verify_password(self, password):
+        return check_password_hash(self.pwd, password)
+

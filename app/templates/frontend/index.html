@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "innerbase.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Time-Line{% endblock %}
@@ -7,20 +7,20 @@
 <script type="text/javascript">
 </script>
 {% endblock %}
+{% block timeshow %}
+{{ mm.timemacro(birth) }}
+{% endblock %}
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    <h1>Hello, {{ current }}{% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
     <div class="container">
         <div class="row">
             <div class="span12 subscribe">
                 <h3 style="margin: inherit">Life is shot , but take it easy .</h3>
                 <p>If something is meant to be , it will be , in the right time , with the right person , for the best reason !</p>
             </div>
-
         </div>
     </div>
     {{ wtf.quick_form(form) }}
-
 </div>
-
 {% endblock %}

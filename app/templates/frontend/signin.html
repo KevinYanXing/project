@@ -1,7 +1,7 @@
 {% extends "innerbase.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Sign up{% endblock %}
+{% block title %}Sign in{% endblock %}
 {% block scripts %}
 {{ super() }}
 <script type="text/javascript">
@@ -17,11 +17,10 @@
 </script>
 {% endblock %}
 {% block timeshow %}
-<div class="bgsign bgstyle1">
+<div class="bgsign bgstyle">
     <div class="page-header w600">
-    <h1>Sign up !</h1>
-    {{ wtf.quick_form(form) }}
+        <h1>Sign in !</h1>
+        {{ wtf.quick_form(form) }}
     </div>
 </div>
-
 {% endblock %}

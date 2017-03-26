@@ -1,0 +1,120 @@
+{% macro timemacro(birth) %}
+<script type="text/javascript">
+    {% if birth %}
+        birth = '{{ birth }}';
+    {% else %}
+        birth = [0,0,0];
+    {% endif %}
+    $(function(){
+        $('.coming-soon').backstretch([
+            '{{ url_for('static',filename='homepage/img/backgrounds/1.jpg') }}',
+            '{{ url_for('static',filename='homepage/img/backgrounds/2.jpg') }}',
+            '{{ url_for('static',filename='homepage/img/backgrounds/3.jpg') }}',
+            '{{ url_for('static',filename='homepage/img/backgrounds/4.jpg') }}'
+        ], {duration: 3000, fade: 750});
+
+        if(birth[0]&&birth[1]&&birth[2]){
+            setInterval(setTime, 1000);
+            birth_day = birth;
+            birth = birth_day.split('-');
+            urodz = new Date(birth_day);
+            var now = new Date();
+            var ile = now.getTime() - urodz.getTime();
+            var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+            $('.span12 p strong').html(dni);
+            month_eng = {
+                '0':'0',
+                '01':'Jan.',
+                '02':'Feb.',
+                '03':'Mar.',
+                '04':'Apr.',
+                '05':'May',
+                '06':'Jun.',
+                '07':'Jul.',
+                '08':'Aug.',
+                '09':'Sep.',
+                '10':'Oct.',
+                '11':'Nov.',
+                '12':'Dec.'
+            };
+            $('.span12 h2 strong').html(birth[2]+','+month_eng[birth[1]]+','+birth[0]);
+
+        }
+
+
+
+
+    });
+    function secondToDate(second) {
+        if (!second) {
+            return 0;
+        }
+        var time = new Array(0, 0, 0, 0, 0);
+        if (second >= 365 * 24 * 3600) {
+            time[0] = parseInt(second / (365 * 24 * 3600));
+            second %= 365 * 24 * 3600;
+        }
+        if (second >= 24 * 3600) {
+            time[1] = parseInt(second / (24 * 3600));
+            second %= 24 * 3600;
+        }
+        if (second >= 3600) {
+            time[2] = parseInt(second / 3600);
+            second %= 3600;
+        }
+        if (second >= 60) {
+            time[3] = parseInt(second / 60);
+            second %= 60;
+        }
+        if (second > 0) {
+            time[4] = second;
+        }
+        return time;
+    }
+    function setTime() {
+        var create_time = Math.round(new Date(Date.UTC(birth[0], birth[1]-1, birth[2], 0, 0, 0)).getTime() / 1000);
+        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+        currentTime = secondToDate((timestamp - create_time));
+        $('.timer .years').html(currentTime[0]);
+        $('.timer .days').html(currentTime[1]);
+        $('.timer .hours').html(currentTime[2]);
+        $('.timer .minutes').html(currentTime[3]);
+        $('.timer .seconds').html(currentTime[4]);
+    }
+
+
+
+</script>
+<div class="coming-soon">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <h2>You come into the world in <strong>??</strong></h2>
+                    <p>As Time Flies Away And Years Are Flowing away Like a River , Now
+                        <strong>??</strong>
+                        Days Had Passed By
+                    </p>
+                    <div class="timer">
+                        <div class="years-wrapper">
+                            <span class="years">??</span> <br>YEARS
+                        </div>
+                        <div class="days-wrapper">
+                            <span class="days">??</span> <br>DAYS
+                        </div>
+                        <div class="hours-wrapper">
+                            <span class="hours">??</span> <br>HOURS
+                        </div>
+                        <div class="minutes-wrapper">
+                            <span class="minutes">??</span> <br>MIMUTES
+                        </div>
+                        <div class="seconds-wrapper">
+                            <span class="seconds">??</span> <br>SECONDS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

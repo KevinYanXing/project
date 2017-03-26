@@ -4,12 +4,12 @@
 
 
 body {
-    background: #f8f8f8 url(img/pattern.jpg);
+    background: #f8f8f8;
     text-align: left;
     font-family: 'Lato', Arial, sans-serif;
     color: #555;
     font-weight: 400;
-    border-top: 2px solid #9BD547;
+    border-top: 15px solid #9BD547;
 }
 
 strong { font-weight: 700; }
@@ -24,13 +24,13 @@ a:hover { text-decoration: none; }
     font-family: 'Lobster', cursive;
     font-size: 38px;
     font-weight: 400;
-    color: #555;
+    color: #DEDEDE;
 }
 
 .logo h1 span { color: #9BD547; }
 
 .logo a {
-    color: #555;
+    color: #DEDEDE;
     text-decoration: none;
     -o-transition: all .2s;
     -moz-transition: all .2s;
