@@ -15,9 +15,9 @@ class NameForm(FlaskForm):
 
 class SignupForm(FlaskForm):
     name = StringField('Your name', validators=[Required()])
-    birth = SDateField('Your birthday', validators=[Required()])
     pwd = PasswordField('Your password',validators=[Required()])
     rppwd = PasswordField('Repeat password',validators=[Required()])
+    birth = SDateField('Your birthday', validators=[Required()])
     pho = FileField('Your head portrait',validators=[FileRequired(),FileAllowed(['jpg','png'],'Please upload images')])
     submit = SubmitField('Submit')
 
@@ -33,7 +33,7 @@ class SigninForm(FlaskForm):
     def validate_pwd(self,field):
         user = User.findone(name=self.name.data)
         if user is not None and user.verify_password(self.pwd.data):
-            login_user(user, True)
+            login_user(user)
         else:
             raise ValueError, 'Invalid username or password.'
 

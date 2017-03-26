@@ -10,6 +10,12 @@ import os
 
 frontend = Blueprint('frontend', __name__)
 
+from flask_login import login_required
+@frontend.route('/secret')
+@login_required
+def secret():
+    return 'Only authenticated users are allowed!'
+
 @frontend.route('/', methods=['GET', 'POST'])
 def index():
     birth = ''

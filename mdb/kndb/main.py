@@ -3,6 +3,7 @@ from mdb.ext import db
 from mdb.models import Models
 from datetime import datetime
 from werkzeug.security import check_password_hash
+from flask_login import UserMixin
 
 def format_ts(ts, format='%Y-%m-%d %H:%M:%S'):
         if not ts:
@@ -31,7 +32,7 @@ class Kn(Models):
     """
     db = db.KN
 
-class User(Models):
+class User(UserMixin,Models):
     """
     用户数据库:
     用户名:name
@@ -43,6 +44,14 @@ class User(Models):
     其他...
     """
     db = db.USER
+
+    from app import login_manager
+
+    @login_manager.user_loader
+    def load_user(user_id):
+        print user_id,'000000'
+        return User.one(user_id)
+
     def verify_password(self, password):
         return check_password_hash(self.pwd, password)
 
