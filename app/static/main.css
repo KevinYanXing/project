@@ -2,6 +2,10 @@
     min-height: 75px;
     margin-bottom: inherit;
 }
+.navbar-nav {
+    float: right;
+    margin: 0;
+}
 .page-header {
      margin: inherit;
 }

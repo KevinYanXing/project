@@ -19,9 +19,9 @@ def create_app(cfg):
 
 def configure_blueprints(app):
     from app.views.frontend import frontend
-    from app.views.main import main
+    from app.views.authmain import authmain
     app.register_blueprint(frontend, url_prefix='')
-    app.register_blueprint(main, url_prefix='/main')
+    app.register_blueprint(authmain, url_prefix='/authmain')
 
 def configure_extensions(app):
     from mdb.ext import db

@@ -17,6 +17,14 @@
 <script type="text/javascript" src="{{ url_for('static',filename='boot/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='boot/moment-with-locales.min.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static',filename='homepage/jquery.backstretch.min.js') }}"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.dropdown-toggle').click(function(){
+        $('.dropdown-menu').toggle()
+    })
+    });
+
+</script>
 {% endblock %}
 
 {% block navbar %}
@@ -28,7 +36,27 @@
             <h1><a href="/">Time-line</a> <span>.</span></h1>
         </div>
         <div class="call-us span8">
-            <p><a href="{{ url_for('frontend.signin') }}">Sign in</a><span style="color: #fff;"> or </span> <a href="{{ url_for('frontend.signup') }}">Sign up</a></p>
+            {% if current_user.is_authenticated %}
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{{ url_for('authmain.upload',pho=current_user.pho) }}" width="30" height="30">
+                            {{ current_user.name }}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">My homepage</a></li>
+                            <li><a href="#">My infomation</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ url_for('authmain.logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <p><a href="{{ url_for('frontend.signin') }}">Sign in</a><span style="color: #fff;"> or </span> <a href="{{ url_for('frontend.signup') }}">Sign up</a></p>
+            {% endif %}
         </div>
     </div>
     </div>

@@ -12,7 +12,7 @@
 {% endblock %}
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello,{% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    <h1>Hello,{% if current_user.is_authenticated %}{{ current_user.name }}{% elif name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
     <div class="container">
         <div class="row">
             <div class="span12 subscribe">
@@ -21,6 +21,12 @@
             </div>
         </div>
     </div>
+    {% if not current_user.is_authenticated %}
     {{ wtf.quick_form(form) }}
+    {% else %}
+    <div style="height: 107px;margin: 0 auto;text-align: center" >
+        <a>个人资料</a> <a>我的主页</a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
