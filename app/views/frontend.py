@@ -7,15 +7,25 @@ from time import mktime,strptime,localtime,strftime
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
 from flask_login import login_user,current_user
+from flask import jsonify,request
+import json
 import os
 
 frontend = Blueprint('frontend', __name__)
 
 from flask_login import login_required
-@frontend.route('/secret')
+@frontend.route('/secret/')
 @login_required
 def secret():
     return 'Only authenticated users are allowed!'
+
+@frontend.route('/test/', methods=['GET', 'POST'])
+def test():
+    if request.args.get('data'):
+        print request.form.get('data'),'00000'
+        data = json.loads(request.args.get('data'))
+        print data,'000000000'
+    return jsonify({'ok':'true'})
 
 @frontend.route('/', methods=['GET', 'POST'])
 def index():
