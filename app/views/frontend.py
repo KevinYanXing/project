@@ -22,7 +22,6 @@ def secret():
 @frontend.route('/test/', methods=['GET', 'POST'])
 def test():
     if request.args.get('data'):
-        print request.form.get('data'),'00000'
         data = json.loads(request.args.get('data'))
         print data,'000000000'
     return jsonify({'ok':'true'})
