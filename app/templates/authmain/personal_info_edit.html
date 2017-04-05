@@ -6,11 +6,18 @@
 {#{{ super() }}#}
 {#{% endblock %}#}
 {% block timeshow %}
-<div class="bgsign bgstyle1">
+<div class="bgsign bgstyle">
     <div class="page-header w600">
     <h1>Edit !</h1>
     {{ wtf.quick_form(form) }}
     </div>
 </div>
-
+<script type="text/javascript">
+    $(function(){
+        $('#name').val('{{ current_user.name }}');
+        $('#birth').val('{{ current_user.birth }}');
+        $('#pho').prev().html('<p> <img data-toggle="tooltip" data-placement="left" id="avatar" title="" class="img-responsive img-rounded" src="{{ url_for('authmain.upload',pho=current_user.pho) }}" alt="" data-original-title="I`m {{ current_user.name }}"> </p>');
+        $('#pho').val('{{ current_user.pho }}')
+    })
+</script>
 {% endblock %}

@@ -93,16 +93,9 @@ a:hover {
     color: #DEDEDE;
 }
 .bgstyle{
-    height: 485px;
     margin: 0 auto;
-    padding-top: 100px
+    padding: 50px 0
 }
-.bgstyle1{
-    height: 530px;
-    margin: 0 auto;
-    padding-top: 10px
-}
-
 /*个人资料*/
 .cvheader{
 	  border-bottom: 1px solid #DFDFDF;
