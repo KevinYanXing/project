@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm,file
-from wtforms import StringField, SubmitField,DateField,PasswordField,FileField
+from wtforms import StringField, SubmitField,DateField,PasswordField,FileField,TextAreaField,HiddenField
 from fsuper import SDateField
 from flask_wtf.file import FileRequired,FileAllowed
 from wtforms.validators import Required,required
@@ -41,6 +41,9 @@ class UsereditForm(FlaskForm):
     name = StringField('Your name', validators=[Required()])
     birth = SDateField('Your birthday', validators=[Required()])
     pho = FileField('Your head portrait',validators=[FileRequired(),FileAllowed(['jpg','png'],'Please upload images')])
+    mood = TextAreaField('Your mood')
+    intro = TextAreaField('Self introduction')
+    tag = HiddenField()
     submit = SubmitField('Submit')
 
 
