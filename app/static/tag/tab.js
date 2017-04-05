@@ -8,7 +8,7 @@ var FancyForm=function(){
 				var c=$(this);
 				a.checkVal(c)
 			});
-			a.inputs.live("keyup blur",function(){
+			a.inputs.on("keyup blur",function(){
 				var c=$(this);
 				a.checkVal(c);
 			});
@@ -34,9 +34,14 @@ $(function(){(
 		
 		var a=$(".plus-tag");
 		
-		$("a em",a).live("click",function(){
+		$("body").on("click",'a em',function(){
+
 			var c=$(this).parents("a"),b=c.attr("title"),d=c.attr("value");
-			delTips(b,d)
+			delTips(b,d);
+			//if($(".plus-tag a").length < 3){
+			//	$(".plus-tag").css('width','282px');
+			//	$(".plus-tag").css('height','36px')
+			//}
 		});
 		
 		hasTips=function(b){
@@ -154,7 +159,7 @@ var searchAjax = function(name, id, isAdd){
 			$con.show();
 		}
 	});
-	$('.default-tag a').live('click', function(){
+	$('.default-tag a').on('click', function(){
 		var $this = $(this),
 				name = $this.attr('title'),
 				id = $this.attr('value');

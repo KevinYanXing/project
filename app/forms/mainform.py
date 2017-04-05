@@ -7,7 +7,6 @@ from flask import redirect,url_for
 from flask_login import login_user
 from mdb.kndb.main import Kn,User
 
-
 class NameForm(FlaskForm):
     name = StringField('What is your name?', validators=[Required()])
     birthday = SDateField('when is your birthday?', validators=[Required()])
