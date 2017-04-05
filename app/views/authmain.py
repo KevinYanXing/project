@@ -1,5 +1,6 @@
-from flask import Blueprint,send_from_directory,abort,redirect,url_for,render_template
+from flask import Blueprint,send_from_directory,abort,redirect,url_for
 import os
+from app.help import Help
 from app.forms.mainform import UsereditForm
 from flask_login import logout_user,login_required
 
@@ -26,11 +27,11 @@ def logout():
 @authmain.route('/personal/info/')
 @login_required
 def personal_info():
-    return render_template('authmain/personal_info.html')
+    return Help.render('authmain/personal_info.html')
 
 @authmain.route('/personal/info/edit/', methods=['GET', 'POST'])
 def personal_info_edit():
     form = UsereditForm()
     if form.validate_on_submit():
         return redirect(url_for('frontend.index'))
-    return render_template('authmain/personal_info_edit.html', form=form)
+    return Help.render('authmain/personal_info_edit.html', form=form)

@@ -1,8 +1,9 @@
 # coding=utf-8
-from flask import render_template, session, redirect, url_for, flash,Blueprint,g
+from flask import session, redirect, url_for, flash,Blueprint,g
 from app.forms.mainform import NameForm,SignupForm,SigninForm
 from mdb.kndb.main import Kn,User
 from bson import ObjectId
+from app.help import Help
 from time import mktime,strptime,localtime,strftime
 from werkzeug.security import generate_password_hash
 from werkzeug.utils import secure_filename
@@ -46,7 +47,7 @@ def index():
         session['birth'] = form.birthday.data
         return redirect(url_for('frontend.index'))
 
-    return render_template('frontend/index.html', form=form, name=name,birth=birth)
+    return Help.render('frontend/index.html', form=form, name=name,birth=birth)
 
 @frontend.route('/signup/', methods=['GET', 'POST'])
 def signup():
@@ -72,11 +73,11 @@ def signup():
         user.save()
         login_user(user)
         return redirect(url_for('frontend.index'))
-    return render_template('frontend/signup.html', form=form)
+    return Help.render('frontend/signup.html', form=form)
 
 @frontend.route('/signin/', methods=['GET', 'POST'])
 def signin():
     form = SigninForm()
     if form.validate_on_submit():
         return redirect(url_for('frontend.index'))
-    return render_template('frontend/signin.html', form=form)
+    return Help.render('frontend/signin.html', form=form)
