@@ -1,0 +1,84 @@
+{% extends "innerbase.html" %}
+
+{% block title %}Personal_info{% endblock %}
+{% block timeshow %}
+<div class="container">
+  <div class="row cvheader">
+    <div class="col-lg-7 col-md-7 col-xs-12">
+      <h1 class="text-primary">{{ current_user.name }}</h1>
+      <p><span class="glyphicon glyphicon-paperclip"></span> 前端工程师 &amp;&amp; UI设计师</p>
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-12">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-xs-4">
+          <p id="contact" class="address text-center" data-original-title="" title="">Edit</p>
+        </div>
+        <div class="col-lg-8 col-md-8 col-xs-8">
+          <p><span class="glyphicon-envelope"></span> terry.lee@gmail.com</p>
+          <p><span class="glyphicon glyphicon-earphone"></span> 13901239073</p>
+          <p><span class="glyphicon glyphicon-road"></span> 北京市朝阳区劲松三区</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-xs-12">
+      <p>
+        <img data-toggle="tooltip" data-placement="left" id="avatar" title="" class="img-responsive img-rounded" src="{{ url_for('authmain.upload',pho=current_user.pho) }}" alt="" data-original-title="I`m {{ current_user.name }}">
+       </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row cvbody">
+    <div class="col-lg-6 col-md-6 col-xs-12">
+      <div class="row">
+        <div class="cbox green">
+          <h4>个人介绍</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus asperiores eum consequatur hic rem earum repudiandae dicta! Est officiis similique fugiat quod quibusdam rerum ipsum eos soluta tempore cupiditate! Accusantium?
+          </p>
+        </div>
+        <div class="cbox red">
+          <h4>个人技能</h4>
+          <p>
+            HTML/CSS/Javascript
+            </p><div class="progress">
+              <div class="progress-bar progress-bar-success" style="width:80%"></div>
+            </div>
+            Java/J2EE
+            <div class="progress">
+              <div class="progress-bar progress-bar-primary" style="width:90%"></div>
+            </div>
+            数据库
+            <div class="progress">
+              <div class="progress-bar progress-bar-info" style="width:80%"></div>
+            </div>
+            Photoshop/UI
+            <div class="progress">
+              <div class="progress-bar progress-bar-warning" style="width:50%"></div>
+            </div>
+          <p></p>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-1 col-md-1 col-xs-12"></div>
+    <div class="col-lg-5 col-md-5 col-xs-12">
+      <div class="row">
+        <div class="bbox">
+          <h4>工作经验</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis dolorem mollitia repellendus. Magni laudantium placeat repudiandae tempore iure deleniti obcaecati. Architecto delectus doloremque quo. Dicta ratione vero eos pariatur itaque.</p>
+        </div>
+        <div class="bbox">
+          <h4>个人爱好</h4>
+          <p>
+            <span class="glyphicon glyphicon-tree-deciduous"></span> 骑马
+            <span class="glyphicon glyphicon-plane"></span> 旅游
+            </p><p><span class="glyphicon glyphicon-cutlery"></span> 美食</p>
+            <p><span class="glyphicon glyphicon-music"></span> 音乐</p>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

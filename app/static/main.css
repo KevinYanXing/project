@@ -102,3 +102,45 @@ a:hover {
     margin: 0 auto;
     padding-top: 10px
 }
+
+/*个人资料*/
+.cvheader{
+	  border-bottom: 1px solid #DFDFDF;
+	  padding-top:30px;
+	  padding-bottom:20px;
+	}
+
+	.cvheader h1{
+	  margin:0;
+	}
+
+	.address{
+	  background: #efb73e;
+	  color: #fff;
+	  padding: 10px 0;
+	}
+
+	.cvbody{
+	  padding-top: 50px;
+	}
+
+	.cbox{
+	  margin-bottom: 30px;
+	  color: #FFF;
+	  padding: 50px;
+	}
+	.green{
+	  background: #2ecc71;
+	}
+
+	.red{
+	  background: #dd4814;
+	}
+
+	.bbox{
+	  border: 1px solid #DFDFDF;
+	  border-radius: 5px;
+	  margin-bottom:30px;
+	  padding: 50px;
+	}
+/*个人资料*/
