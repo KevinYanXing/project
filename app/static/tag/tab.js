@@ -131,7 +131,7 @@ var searchAjax = function(name, id, isAdd){
 };
 // 搜索
 (function(){
-	var $b = $('.plus-tag-add button'),$i = $('.plus-tag-add input');
+	var $b = $('.show-tag button'),$i = $('.show-tag input');
 	$i.keyup(function(e){
 		if(e.keyCode == 13){
 			$b.click();
@@ -146,16 +146,15 @@ var searchAjax = function(name, id, isAdd){
 })();
 // 推荐标签
 (function(){
-	var str = ['展开推荐标签', '收起推荐标签']
-	$('.plus-tag-add a').click(function(){
+	$('.show-tag a').click(function(){
 		var $this = $(this),
 				$con = $('#mycard-plus');
 
 		if($this.hasClass('plus')){
-			$this.removeClass('plus').text(str[0]);
+			$this.removeClass('plus').html('<a href="javascript:void(0);"><button type="button" class="btn btn-primary btn-xs" style="margin-top: 5px">展开标签</button></a>');
 			$con.hide();
 		}else{
-			$this.addClass('plus').text(str[1]);
+			$this.addClass('plus').html('<a href="javascript:void(0);"><button type="button" class="btn btn-primary btn-xs" style="margin-top: 5px">收起标签</button></a>');
 			$con.show();
 		}
 	});
