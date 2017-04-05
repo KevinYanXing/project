@@ -1,5 +1,6 @@
 from flask import Blueprint,send_from_directory,abort,redirect,url_for,render_template
 import os
+from app.forms.mainform import UsereditForm
 from flask_login import logout_user,login_required
 
 authmain = Blueprint('authmain', __name__)
@@ -16,13 +17,20 @@ def upload(pho):
     filename = os.path.basename(path)
     return send_from_directory(pth, filename, add_etags=False, cache_timeout=2592000)
 
-@authmain.route('/logout')
+@authmain.route('/logout/')
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('frontend.index'))
 
-@authmain.route('/personal/info')
+@authmain.route('/personal/info/')
 @login_required
 def personal_info():
     return render_template('authmain/personal_info.html')
+
+@authmain.route('/personal/info/edit/', methods=['GET', 'POST'])
+def personal_info_edit():
+    form = UsereditForm()
+    if form.validate_on_submit():
+        return redirect(url_for('frontend.index'))
+    return render_template('authmain/personal_info_edit.html', form=form)

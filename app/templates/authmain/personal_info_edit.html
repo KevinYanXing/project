@@ -1,0 +1,16 @@
+{% extends "innerbase.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Edit{% endblock %}
+{#{% block scripts %}#}
+{#{{ super() }}#}
+{#{% endblock %}#}
+{% block timeshow %}
+<div class="bgsign bgstyle1">
+    <div class="page-header w600">
+    <h1>Edit !</h1>
+    {{ wtf.quick_form(form) }}
+    </div>
+</div>
+
+{% endblock %}

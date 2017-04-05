@@ -37,5 +37,13 @@ class SigninForm(FlaskForm):
         else:
             raise ValueError, 'Invalid username or password.'
 
+class UsereditForm(FlaskForm):
+    name = StringField('Your name', validators=[Required()])
+    birth = SDateField('Your birthday', validators=[Required()])
+    pho = FileField('Your head portrait',validators=[FileRequired(),FileAllowed(['jpg','png'],'Please upload images')])
+    submit = SubmitField('Submit')
+
+
+
 
 
