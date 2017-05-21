@@ -50,7 +50,12 @@ class User(Models):
 
     @login_manager.user_loader
     def load_user(user_id):
-        return User.one(ObjectId(user_id))
+        if user_id:
+            try:
+                user_id = ObjectId(user_id)
+            except:
+                return None
+        return User.one(user_id)
 
     def verify_password(self, password):
         return check_password_hash(self.pwd, password)
