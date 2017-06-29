@@ -1,6 +1,6 @@
 # coding=utf-8
 from basedb import BaseDB
-from damyunit.dredis import DRedis
+from dredis import DRedis
 import connection
 
 from pymongo import MongoClient
