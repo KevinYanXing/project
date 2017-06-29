@@ -1,6 +1,6 @@
 # coding=utf-8
 from flask import g
-from damydb.wmongo import WMongo
+from wmongo import WMongo
 
 
 def get_current_user():
