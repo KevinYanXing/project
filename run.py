@@ -4,10 +4,10 @@ from flask_moment import Moment
 from app import create_app
 
 app = create_app("config.cfg")
-manager = Manager(app)
+# manager = Manager(app)
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 
 if __name__ == '__main__':
-    manager.run()
+    app.run()
